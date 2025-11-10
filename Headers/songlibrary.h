@@ -6,14 +6,19 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QStandardItemModel>
+#include <QTableWidget>
 
 class SongLibrary : public QWidget
 {
     Q_OBJECT
 public:
     explicit SongLibrary(QWidget *parent = nullptr);
+     QTableWidget *tableWidget;
 
     void setSongs(const QVector<QStringList> &data);
+    QVector<int> getSelectedRows() const;
+       QStandardItemModel *model;
+           QTableView *tableView;
 
 signals:
     void searchChanged(QString text);
@@ -21,8 +26,10 @@ signals:
 
 private:
     QLineEdit *searchBox;
-    QTableView *tableView;
-    QStandardItemModel *model;
+
+
+
+
 };
 
 #endif

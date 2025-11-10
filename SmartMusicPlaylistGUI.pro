@@ -2,40 +2,35 @@ QT += core gui widgets
 
 CONFIG += c++17
 
-# Include paths - CRITICAL for finding headers
 INCLUDEPATH += $$PWD/include
-INCLUDEPATH += $$PWD/Headers
+
+# SFML Audio Library
+LIBS += -lsfml-audio -lsfml-system
 
 SOURCES += \
     Sources/main.cpp \
     Sources/mainwindow.cpp \
     Sources/musiccontroller.cpp \
-    Sources/playlistgenerator.cpp \
     Sources/sidebar.cpp \
     Sources/songlibrary.cpp \
     Sources/nowplayingbar.cpp \
+    Sources/playlistgenerator.cpp \
     Sources/duplicatefinder.cpp \
     Sources/useranalytics.cpp \
-    Sources/settings.cpp
+    Sources/settings.cpp \
+    Sources/playlistmanager.cpp
 
 HEADERS += \
     Headers/mainwindow.h \
     Headers/musiccontroller.h \
-    Headers/playlistgenerator.h \
     Headers/sidebar.h \
     Headers/songlibrary.h \
     Headers/nowplayingbar.h \
+    Headers/playlistgenerator.h \
     Headers/duplicatefinder.h \
     Headers/useranalytics.h \
-    Headers/settings.h
-
-# Windows specific settings
-win32 {
-    QMAKE_CXXFLAGS += -Wa,-mbig-obj
-}
+    Headers/settings.h \
+    Headers/playlistmanager.h
 
 TARGET = SmartMusicPlaylistGUI
 TEMPLATE = app
-
-DISTFILES += \
-    data/songs.csv

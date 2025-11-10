@@ -26,8 +26,27 @@ public:
     QVector<QStringList> findDuplicates();
     QStringList getTopGenres();
     QStringList getTopArtists();
+
+    // Playlist methods
+    bool createPlaylist(const QString& name);
+    QStringList getAllPlaylistNames();
+    QVector<QStringList> getPlaylistSongs(int playlistIndex);
+    bool addSongToPlaylist(int playlistIndex, int songIndex);
+    bool addSongToPlaylist(int playlistIndex, const QStringList &songData);
+    bool deletePlaylist(int playlistIndex);
+    QVector<QStringList> generateMoodPlaylist(const QString& mood, int duration);
+    QVector<QStringList> generateWorkoutPlaylist(int duration);
+    QVector<QStringList> generateRelaxationPlaylist(int duration);
+    QVector<QStringList> generatePartyPlaylist();
+    int getCurrentSongIndex() { return -1; } // For future use
+
+
+
 signals:
     void libraryLoaded(int count);
+    void playlistCreated(QString name);
+    void playlistDeleted(int index);
+
 private:
     QStringList songToRow(const Song& s);
 };
